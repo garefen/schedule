@@ -2,7 +2,9 @@ const User = require('../models/User');
 
 module.exports = {
     async index(req, res) {
-        const user = await User.find({});
+        const { userId } = req.body;
+
+        const user = await User.findById(userId);
 
         return res.json(user)
     },

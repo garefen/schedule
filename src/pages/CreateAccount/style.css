@@ -1,10 +1,10 @@
-.login__title {
+.createaccount__title {
   text-align: center;
   margin-top: 30px;
   font-size: 1.75rem;
 }
 
-.login__form {
+.createaccount__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,7 +22,7 @@
   margin: 30px auto 0;
 }
 
-.login__form input {
+.createaccount__form input {
   border: none;
   background: none;
   border-bottom: 1px solid white;
@@ -32,27 +32,27 @@
   width: 100%;
 }
 
-.login__form input::-webkit-input-placeholder {
+.createaccount__form input::-webkit-input-placeholder {
   color: white;
   opacity: .7;
 }
 
-.login__form input:-ms-input-placeholder {
+.createaccount__form input:-ms-input-placeholder {
   color: white;
   opacity: .7;
 }
 
-.login__form input::-ms-input-placeholder {
+.createaccount__form input::-ms-input-placeholder {
   color: white;
   opacity: .7;
 }
 
-.login__form input::placeholder {
+.createaccount__form input::placeholder {
   color: white;
   opacity: .7;
 }
 
-.login__form button {
+.createaccount__form button {
   background: white;
   border: none;
   padding: 10px 20px;
@@ -61,7 +61,7 @@
   cursor: pointer;
 }
 
-.login__form__link {
+.createaccount__form__link {
   color: #095280;
   text-decoration: none;
 }

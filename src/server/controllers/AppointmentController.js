@@ -1,38 +1,67 @@
 const Appointment = require('../models/Appointment');
 
+const constrains = require('../constrais');
+
 module.exports = {
     async index(req, res) {
-        const { user } = req.body;
+        const { userId } = req.body;
 
         const appointment = await Appointment.find({
-            user
+            userId
         });
 
         return res.json(appointment);
     },
 
     async store(req, res) {
-        const { name, hour, day, month, user } = req.body;
+        
+        const { name, userId, date } = req.body;
+
+        const newDate = new Date(date);
+        const month = constrains.months[newDate.getMonth()];
+        const day = newDate.getDate();
+        const weekday = constrains.week[newDate.getDay()];
+        const hrs = newDate.getHours();
+        let minutes = newDate.getMinutes();
+
+        if (minutes.toString().length < 2) {
+            minutes = "0" + minutes.toString();
+        }
+        const hour = `${hrs}:${minutes}`;
 
         const appointment = await Appointment.create({
             name,
             hour,
             day,
             month,
-            user
+            userId,
+            weekday
         });
 
         return res.json(appointment);
     },
 
     async update(req, res) {
-        const { id, name, hour, day, month } = req.body;
+        const { name, id, date } = req.body;
+
+        const newDate = new Date(date);
+        const month = constrains.months[newDate.getMonth()];
+        const day = newDate.getDate();
+        const weekday = constrains.week[newDate.getDay()];
+        const hrs = newDate.getHours();
+        let minutes = newDate.getMinutes();
+
+        if (minutes.toString().length < 2) {
+            minutes = "0" + minutes.toString();
+        }
+        const hour = `${hrs}:${minutes}`;
 
         const appointment = await Appointment.findByIdAndUpdate(id, {
             name,
             hour,
             day,
-            month
+            month,
+            weekday
         });
 
         return res.json(appointment);

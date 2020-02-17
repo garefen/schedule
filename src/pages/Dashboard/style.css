@@ -31,6 +31,18 @@
   right: 30px;
 }
 
+.dashboard__logout button {
+  cursor: pointer;
+  color: #dd7b8e;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
 .dashboard__slider {
   display: -webkit-box;
   display: -ms-flexbox;

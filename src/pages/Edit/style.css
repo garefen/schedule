@@ -14,6 +14,10 @@
   font-size: 2rem;
 }
 
+.edit .react-datepicker-wrapper {
+  text-align: center;
+}
+
 .edit__returnBtn {
   color: white;
   position: absolute;

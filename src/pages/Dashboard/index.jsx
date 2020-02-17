@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    Link
+    Link,
+    Redirect
 } from 'react-router-dom';
 
 import './style.css';
@@ -9,29 +10,29 @@ import './style.css';
 import Schedule from '../../components/Schedule';
 import ScheduleDescription from '../../components/ScheduleDescription';
 
-import data from '../../data.json';
+import api from '../../services/api'
 
 const Dashboard = ({ cookies }) => {
     const [schedule, setSchedule] = useState([]);
-    const [userId, setUserId] = useState("");
+
+    const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        // const { data } = await api.post('/login', { email, password });
         
-        setSchedule(data.schedule);
-        
-        setUserId(cookies.get('userId'));
-    }, []);
+        const getAppointments = async () => {
+            const { data } = await api.post('/appointment', { userId: cookies.get('userId') });
+            setSchedule(data);
+        }
+
+        getAppointments();
+    }, [cookies]);
 
     function scrollOnClick() {
         const slider = document.querySelector('.dashboard__slider');
         if (this === schedule.length) {
             document.getElementById('cta_button__add').classList.remove('active')
-            document.getElementById('cta_button__edit').classList.remove('active')
         } else {
             document.getElementById('cta_button__add').classList.add('active')
-            document.getElementById('cta_button__edit').classList.add('active')
-
         }
         slider.scrollTo({
             left: window.innerWidth * .99 * this,
@@ -44,10 +45,19 @@ const Dashboard = ({ cookies }) => {
         document.getElementById(`item_${this}`).classList.add('active');
     }
 
+    const logout = () => {
+        cookies.remove('userId');
+        setRedirect(true);
+    }
+
     return (
         <div className="dashboard">
+            {redirect && <Redirect to='/login'/>}
             <div className="dashboard__add">
                 <Link to='/add' id="cta_button__add" className="dashboard__add__button active">+</Link>
+            </div>
+            <div className="dashboard__logout">
+                <button onClick={logout}>Sair</button>
             </div>
             <div className="dashboard__slider">
                 {schedule.map((item, key) => {

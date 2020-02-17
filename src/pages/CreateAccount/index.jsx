@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Link     } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
 import './style.css';
 
-const Login = ({ cookies }) => {
+const CreateAccount = ({ cookies }) => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
@@ -18,21 +19,18 @@ const Login = ({ cookies }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const { data } = await api.post('/login', { email, password });
+        const { data } = await api.post('/user/create', { email, password, name });
 
-        console.log(data);
-        if (data.error) {
-            alert("Email or password incorrect");
-        } else {
-            cookies.set('userId', data._id);
-            setRedirect(true);
-        }
+        cookies.set('userId', data._id);
+        setRedirect(true);
     }
 
+    const handleNameChange = (event) => {
+        setName(event.target.value);
+    }
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
     }
-
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     }
@@ -40,13 +38,14 @@ const Login = ({ cookies }) => {
     return (
         <>
             {redirect && <Redirect to='/' />}
-            <div className="login">
-                <h1 className="login__title">Login</h1>
-                <form onSubmit={handleSubmit} className="login__form">
+            <div className="createaccount">
+                <h1 className="createaccount__title">Sign In</h1>
+                <form onSubmit={handleSubmit} className="createaccount__form">
+                    <input onChange={handleNameChange} type="text" placeholder="Name" />
                     <input onChange={handleEmailChange} type="text" placeholder="Email" />
                     <input onChange={handlePasswordChange} type="password" placeholder='Password' />
-                    <Link className='login__form__link' to='/createaccount'>Doesn't have and account? Sign in</Link>
-                    <button type="submit">Login</button>
+                    <Link className='createaccount__form__link' to='/login'>Already have an account? Login</Link>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
 
@@ -54,4 +53,4 @@ const Login = ({ cookies }) => {
     )
 };
 
-export default Login;
+export default CreateAccount;

@@ -26,6 +26,18 @@
         }
     }
 
+    &__logout button{
+        cursor: pointer;
+        color: rgb(221, 123, 142);
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        background: none;
+        border: none;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+    }
+
     &__slider {
         display: flex;
         flex-direction: row;

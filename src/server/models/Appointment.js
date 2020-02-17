@@ -5,7 +5,8 @@ const AppointmentSchema = new mongoose.Schema({
     hour: String,
     day: Number,
     month: String,
-    user: {
+    weekday: String,
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }

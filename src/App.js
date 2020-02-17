@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
 
 import {
@@ -13,16 +13,9 @@ import Dashboard from './pages/Dashboard';
 import Add from './pages/Add';
 import Edit from './pages/Edit';
 import Login from './pages/Login';
-
-// const routes = {
-//   "/dashboard": () => <Dashboard />,
-//   "/add": () => <Add />,
-//   "/edit/:id": ({ id }) => <Edit id={id} />,
-//   "/login": () => <Login />
-// }
+import CreateAccount from './pages/CreateAccount';
 
 function App() {
-  // const routerResult = useRoutes(routes);
   const cookies = new Cookies();
 
   return (  
@@ -32,15 +25,18 @@ function App() {
           <Route path='/login'>
             <Login cookies={cookies} />
           </Route>
+          <Route path='/createaccount'>
+            <CreateAccount cookies={cookies} />
+          </Route>
           { cookies.get('userId') ? 
             <>
               <Route path='/add'>
                 <Add cookies={cookies} />
               </Route>
               <Route path='/edit/:id'>
-                <Edit cookies={cookies} />
+                <Edit />
               </Route>
-              <Route path='/'>
+              <Route exact path='/'>
                 <Dashboard cookies={cookies} />
               </Route>
             </>
