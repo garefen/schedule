@@ -1,0 +1,127 @@
+.dashboard {
+  padding: 5%;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dashboard__add__button {
+  display: none;
+}
+
+.dashboard__add__button.active {
+  cursor: pointer;
+  color: lightskyblue;
+  font-size: 2rem;
+  height: 50px;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: white;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.dashboard__slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: hidden;
+  height: 95vh;
+}
+
+.dashboard__slider::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard__slider__item {
+  margin-right: 10%;
+  height: 95vh;
+}
+
+.dashboard__slider__item__lastSlide {
+  min-width: 90vw;
+  height: 60vh;
+  color: white;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.dashboard__slider__item__lastSlide__title {
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+.dashboard__slider__item__lastSlide__cta {
+  text-align: center;
+}
+
+.dashboard__slider__item__lastSlide__cta__button {
+  cursor: pointer;
+  background: none;
+  color: lightskyblue;
+  font-size: 2rem;
+  height: 50px;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-top: 30px;
+  background: white;
+}
+
+.dashboard__controls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 2.5%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.dashboard__controls__item {
+  display: block;
+  cursor: pointer;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: #467b9c;
+  margin: 0 5px;
+}
+
+.dashboard__controls__item.active {
+  background: #1b303d;
+}
+/*# sourceMappingURL=style.css.map */

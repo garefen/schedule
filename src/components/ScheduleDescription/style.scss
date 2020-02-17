@@ -1,0 +1,17 @@
+.scheduleDescription {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    &__weekday {
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: lighter;
+    }
+
+    &__date {
+        font-size: 1.5rem;
+        margin-top: 5px;
+    }
+}

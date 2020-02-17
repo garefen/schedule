@@ -1,0 +1,85 @@
+.add {
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add__title {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.add__returnBtn {
+  color: white;
+  position: absolute;
+  top: 3%;
+  left: 2%;
+}
+
+@media screen and (max-width: 767px) {
+  .add__returnBtn {
+    bottom: 3%;
+    left: 5%;
+    top: initial;
+  }
+}
+
+.add__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px 0 0;
+}
+
+.add__form input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+  margin: 10px auto;
+  padding: 5px 0;
+  width: 80%;
+  max-width: 800px;
+}
+
+.add__form input::-webkit-input-placeholder {
+  color: white;
+  opacity: .7;
+}
+
+.add__form input:-ms-input-placeholder {
+  color: white;
+  opacity: .7;
+}
+
+.add__form input::-ms-input-placeholder {
+  color: white;
+  opacity: .7;
+}
+
+.add__form input::placeholder {
+  color: white;
+  opacity: .7;
+}
+
+.add__form button[type=submit] {
+  width: 40%;
+  max-width: 400px;
+  height: 50px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin: 50px auto 0;
+  border: 1px solid white;
+  background: none;
+}
+/*# sourceMappingURL=style.css.map */

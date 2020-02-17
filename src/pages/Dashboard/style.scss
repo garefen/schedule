@@ -1,0 +1,104 @@
+.dashboard {
+    padding: 5%;
+    height: 100vh;
+    width: 100vw;
+
+    &__add {
+        &__button {
+            display: none;
+            &.active {
+                cursor: pointer;
+                // color: pink;
+                color: lightskyblue;
+                font-size: 2rem;
+                height: 50px;
+                width: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                border: 3px solid white;
+                background: white;
+                position: absolute;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+    }
+
+    &__slider {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        height: 95vh;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        &__item {
+            margin-right: 10%;
+            height: 95vh;
+
+            &__lastSlide {
+                // border: 3px solid white;
+                min-width: 90vw;
+                height: 60vh;
+                color: white;
+                overflow: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &__title {
+                    margin-top: 50px;
+                    font-size: 2rem;
+                }
+
+                &__cta {
+                    text-align: center;
+                    &__button {
+                        cursor: pointer;
+                        background: none;
+                        // color: pink;
+                        color: lightskyblue;
+                        font-size: 2rem;
+                        height: 50px;
+                        width: 50px;
+                        display: flex;
+                        align-items: center;
+                        margin: 0 auto;
+                        justify-content: center;
+                        border-radius: 50%;
+                        border: 3px solid white;
+                        margin-top: 30px;
+                        background: white;
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    &__controls {
+        display: flex;
+        position: absolute;
+        bottom: 2.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        &__item {
+            display: block;
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            // background: #dd7385;
+            background: #467b9c;
+            margin: 0 5px;
+            &.active {
+                // background: #5c3037;
+                background: #1b303d;
+            }
+        }
+    }
+}

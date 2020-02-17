@@ -1,0 +1,77 @@
+.schedule {
+  border: 3px solid white;
+  min-width: 90vw;
+  height: 70vh;
+  color: white;
+  overflow: auto;
+  position: relative;
+}
+
+.schedule__edit__button {
+  display: none;
+}
+
+.schedule__edit__button.active {
+  cursor: pointer;
+  color: lightskyblue;
+  font-size: 2rem;
+  height: 50px;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  border: 1px solid white;
+  background: none;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.schedule__edit__button.active svg {
+  width: 40%;
+  height: 40%;
+  fill: white;
+}
+
+.schedule__inner {
+  padding: 20px;
+}
+
+.schedule__inner__time {
+  font-size: 3rem;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.schedule__inner__time:after {
+  content: '';
+  height: 3px;
+  width: 90px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: white;
+}
+
+.schedule__inner__title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.schedule__inner__bullets {
+  padding: 20px 30px;
+}
+
+.schedule__inner__bullets__item:not(:first-child) {
+  margin: 10px 0;
+}
+/*# sourceMappingURL=style.css.map */

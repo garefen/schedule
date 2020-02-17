@@ -1,0 +1,64 @@
+{
+    "user": {
+       "username": "admin",
+       "password": "admin"
+    },
+    "schedule": [
+        {
+            "_id": "1",
+            "day": "1",
+            "month": "Fevereiro",
+            "weekday": "Segunda",
+            "time": "13:30",
+            "title": "Interns Meeting",
+            "bullets": [
+                "Orange Room",
+                "Bring Laptop"
+            ]
+        },
+        {
+            "_id": "2",
+            "day": "3",
+            "month": "Fevereiro",
+            "weekday": "Terça",
+            "time": "23:30",
+            "title": "Tech Meeting",
+            "bullets": [
+                "Purple Room"
+            ]
+        },
+        {
+            "_id": "3",
+            "day": "10",
+            "month": "Fevereiro",
+            "weekday": "Quarta",
+            "time": "09:45",
+            "title": "Doctor's Appointment",
+            "bullets": [
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street",
+                "7th Street"
+            ]
+        },
+        {
+            "_id": "4",
+            "day": "16",
+            "month": "Fevereiro",
+            "weekday": "Domingo",
+            "time": "13:00",
+            "title": "Vacation",
+            "bullets": [
+                
+            ]
+        }
+    ]
+}
