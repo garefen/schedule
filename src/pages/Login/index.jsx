@@ -50,6 +50,7 @@ const Login = ({ cookies }) => {
                     <Link className='login__form__link' to='/createaccount'>Doesn't have and account? Sign in</Link>
                     <button type="submit">Login</button>
                 </form>
+                <img draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
             </div>
 
         </>

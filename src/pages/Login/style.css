@@ -65,4 +65,11 @@
   color: #095280;
   text-decoration: none;
 }
+
+.login img {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  width: 30%;
+}
 /*# sourceMappingURL=style.css.map */

@@ -73,6 +73,7 @@ const Dashboard = ({ cookies }) => {
                         <span className="dashboard__slider__item__lastSlide__title">
                             Adicione um compromisso
                         </span>
+                        <img draggable='false' className='dashboard__slider__item__lastSlide__image' src={require('../../assets/idle.svg')} alt=""/>
                     </div>
                     <div className="dashboard__slider__item__lastSlide__cta">
                         <Link to='/add' className="dashboard__slider__item__lastSlide__cta__button">+</Link>

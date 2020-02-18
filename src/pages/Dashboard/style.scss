@@ -53,19 +53,24 @@
             height: 95vh;
 
             &__lastSlide {
-                // border: 3px solid white;
                 min-width: 90vw;
                 height: 60vh;
                 color: white;
                 overflow: auto;
                 display: flex;
                 align-items: center;
+                flex-direction: column;
                 justify-content: center;
                 &__title {
-                    margin-top: 50px;
+                    margin-bottom: 0px;
                     font-size: 2rem;
                 }
-
+                &__image {
+                    width: 20%;
+                    min-width: 200px;
+                    margin-top: 40px;
+                    margin-bottom: -50px;
+                }
                 &__cta {
                     text-align: center;
                     &__button {

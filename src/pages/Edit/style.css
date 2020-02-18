@@ -9,6 +9,13 @@
           flex-direction: column;
 }
 
+.edit img {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 15%;
+}
+
 .edit__title {
   text-align: center;
   font-size: 2rem;

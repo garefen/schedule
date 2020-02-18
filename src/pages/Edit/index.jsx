@@ -79,6 +79,7 @@ const Edit = () => {
                         return <input type="text" defaultValue={value} className='edit__form__bullet' />
                     })}
                     <button type='submit'>Enviar</button>
+                    <img src={require('../../assets/editpage.svg')} alt=""/>
                 </form>
             </div>
         </>

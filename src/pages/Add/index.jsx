@@ -87,6 +87,7 @@ const Add = ({cookies}) => {
 
                     <button type='submit'>Enviar</button>
                 </form>
+                <img src={require('../../assets/add.svg')} alt=""/>
             </div>
         </>
     );
