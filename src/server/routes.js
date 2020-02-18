@@ -8,10 +8,6 @@ const SingleAppointment = require('./controllers/SingleAppointment');
 const UserController = require('./controllers/UserController');
 const AllUsersController = require('./controllers/AllUsersController');
 
-routes.get('/', (req, res) => {
-    return res.json({message: "Hello world"})
-})
-
 routes.post('/user/create', UserController.store);
 
 routes.post('/user', UserController.index);
@@ -24,8 +20,11 @@ routes.post('/appointment/create', AppointmentController.store);
 
 routes.post('/appointment', AppointmentController.index);
 
+routes.post('/appointment/delete', AppointmentController.delete);
+
 routes.post('/appointment/edit', AppointmentController.update);
 
 routes.post('/appointment/getone', SingleAppointment.index);
+
 
 module.exports = routes;

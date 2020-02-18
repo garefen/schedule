@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, Link     } from 'react-router-dom';
+import { Redirect, Link, useHistory} from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -9,6 +9,8 @@ const Login = ({ cookies }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
+
+    const history = useHistory();
 
     useEffect(() => {
         if (cookies.get('userID')) {
@@ -20,12 +22,12 @@ const Login = ({ cookies }) => {
         event.preventDefault();
         const { data } = await api.post('/login', { email, password });
 
-        console.log(data);
         if (data.error) {
             alert("Email or password incorrect");
         } else {
             cookies.set('userId', data._id);
             setRedirect(true);
+            history.push('/')
         }
     }
 

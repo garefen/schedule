@@ -9,7 +9,9 @@ const AppointmentSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    bullets: [String],
+    date: Date
 });
 
 module.exports = mongoose.model('Appointment', AppointmentSchema);

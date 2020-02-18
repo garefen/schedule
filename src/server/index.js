@@ -4,6 +4,12 @@ const routes = require('./routes');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const EraseOldAppointmentsController = require('./controllers/EraseOldAppointmentsController');
+
+const schedule = require('node-schedule');
+
+schedule.scheduleJob('00 00 * * *', EraseOldAppointmentsController.index);
+
 const app = express();
 app.use(cors());
 

@@ -15,6 +15,7 @@ import './style.css';
 const Edit = () => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState(new Date());
+    const [bullets, setBullets] = useState([]);
 
     const [redirect, setRedirect] = useState(false);
 
@@ -25,6 +26,7 @@ const Edit = () => {
             const { data } = await api.post('/appointment/getone', { id });
 
             setTitle(data.name);
+            setBullets(data.bullets);
         }
 
         getAppointment();
@@ -42,10 +44,17 @@ const Edit = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
+        let bul = [...document.getElementsByClassName('edit__form__bullet')];
+        let arr = [];
+        bul.map((item) => {
+            arr.push((item.value));
+        })
+
         const { data } = await api.post('appointment/edit', {
             id,
             name: title,
-            date
+            date,
+            bullets: arr
         });       
         
         setRedirect(true);
@@ -66,6 +75,9 @@ const Edit = () => {
                         showTimeSelect
                         dateFormat="Pp"
                     />
+                    {bullets.map((value) => {
+                        return <input type="text" defaultValue={value} className='edit__form__bullet' />
+                    })}
                     <button type='submit'>Enviar</button>
                 </form>
             </div>

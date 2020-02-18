@@ -8,14 +8,14 @@ module.exports = {
 
         const appointment = await Appointment.find({
             userId
-        });
+        }).sort({date: 1});
 
         return res.json(appointment);
     },
 
     async store(req, res) {
         
-        const { name, userId, date } = req.body;
+        const { name, userId, date, bullets } = req.body;
 
         const newDate = new Date(date);
         const month = constrains.months[newDate.getMonth()];
@@ -35,14 +35,16 @@ module.exports = {
             day,
             month,
             userId,
-            weekday
+            weekday,
+            bullets,
+            date: newDate
         });
 
         return res.json(appointment);
     },
 
     async update(req, res) {
-        const { name, id, date } = req.body;
+        const { name, id, date, bullets } = req.body;
 
         const newDate = new Date(date);
         const month = constrains.months[newDate.getMonth()];
@@ -56,12 +58,15 @@ module.exports = {
         }
         const hour = `${hrs}:${minutes}`;
 
+
         const appointment = await Appointment.findByIdAndUpdate(id, {
             name,
             hour,
             day,
             month,
-            weekday
+            weekday,
+            bullets,
+            date
         });
 
         return res.json(appointment);
