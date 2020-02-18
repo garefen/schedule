@@ -15,6 +15,7 @@ const Login = ({ cookies }) => {
     useEffect(() => {
         if (cookies.get('userID')) {
             setRedirect(true);
+            history.push('/');
         }
     }, [cookies]);
 
@@ -26,8 +27,11 @@ const Login = ({ cookies }) => {
             alert("Email or password incorrect");
         } else {
             cookies.set('userId', data._id);
-            setRedirect(true);
-            history.push('/')
+            document.getElementById('loader-wrapper').classList.add('active');
+            setTimeout(() => {
+                setRedirect(true);
+                history.push('/')
+            }, 2000);
         }
     }
 
@@ -52,7 +56,9 @@ const Login = ({ cookies }) => {
                 </form>
                 <img draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
             </div>
-
+            <div id="loader-wrapper">
+                <div className="loader"></div>
+            </div>
         </>
     )
 };
