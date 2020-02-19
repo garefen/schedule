@@ -14,7 +14,7 @@ const Login = ({ cookies }) => {
 
     useEffect(() => {
         if (cookies.get('userId')) {
-            // history.push('/');
+            history.push('/');
         }
     }, []);
 
