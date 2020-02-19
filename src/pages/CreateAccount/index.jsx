@@ -39,13 +39,13 @@ const CreateAccount = ({ cookies }) => {
         <>
             {redirect && <Redirect to='/' />}
             <div className="createaccount">
-                <h1 className="createaccount__title">Sign In</h1>
+                <h1 className="createaccount__title">Criar Conta</h1>
                 <form onSubmit={handleSubmit} className="createaccount__form">
-                    <input onChange={handleNameChange} type="text" placeholder="Name" />
+                    <input onChange={handleNameChange} type="text" placeholder="Nome" />
                     <input onChange={handleEmailChange} type="text" placeholder="Email" />
-                    <input onChange={handlePasswordChange} type="password" placeholder='Password' />
-                    <Link className='createaccount__form__link' to='/login'>Already have an account? Login</Link>
-                    <button type="submit">Sign In</button>
+                    <input onChange={handlePasswordChange} type="password" placeholder='Senha' />
+                    <Link className='createaccount__form__link' to='/login'>Já tem uma conta? Clique aqui</Link>
+                    <button type="submit">Criar conta</button>
                 </form>
             </div>
 

@@ -24,7 +24,7 @@ const Schedule = ({ item }) => {
                 </Link>
             </div>
             <div className="schedule__delete">
-                <button type="button" onClick={deleteItem}>Delete</button>
+                <button type="button" onClick={deleteItem}>Apagar</button>
             </div>
             <div className="schedule__inner">
                 <span className='schedule__inner__time'>{item.hour}</span>

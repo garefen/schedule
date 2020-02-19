@@ -13,25 +13,26 @@ const Login = ({ cookies }) => {
     const history = useHistory();
 
     useEffect(() => {
-        if (cookies.get('userID')) {
-            setRedirect(true);
-            history.push('/');
+        if (cookies.get('userId')) {
+            // history.push('/');
         }
-    }, [cookies]);
+    }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const { data } = await api.post('/login', { email, password });
 
         if (data.error) {
-            alert("Email or password incorrect");
+            alert("Email e senha incorretos");
         } else {
             cookies.set('userId', data._id);
+            console.log('cookie setted')
+            console.log(cookies)
             document.getElementById('loader-wrapper').classList.add('active');
             setTimeout(() => {
-                setRedirect(true);
-                history.push('/')
-            }, 2000);
+                setRedirect(true)
+                console.log('redirect, true')
+            }, 2000)
         }
     }
 
@@ -50,8 +51,8 @@ const Login = ({ cookies }) => {
                 <h1 className="login__title">Login</h1>
                 <form onSubmit={handleSubmit} className="login__form">
                     <input onChange={handleEmailChange} type="text" placeholder="Email" />
-                    <input onChange={handlePasswordChange} type="password" placeholder='Password' />
-                    <Link className='login__form__link' to='/createaccount'>Doesn't have and account? Sign in</Link>
+                    <input onChange={handlePasswordChange} type="password" placeholder='Senha' />
+                    <Link className='login__form__link' to='/createaccount'>Criar uma conta</Link>
                     <button type="submit">Login</button>
                 </form>
                 <img draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
