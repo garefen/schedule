@@ -8,8 +8,8 @@ import api from '../../services/api';
 const Schedule = ({ item }) => {
     const [redirect, setRedirect] = useState(false);
 
-    const deleteItem = () => {
-        const { data } = api.post('/appointment/delete', {id: item._id})
+    const deleteItem = async () => {
+        await api.post('/appointment/delete', {id: item._id})
         setRedirect(true);
         window.location.reload()
     }

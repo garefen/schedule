@@ -42,7 +42,8 @@ const Add = ({cookies}) => {
         bul.map((item) => {
             arr.push((item.value));
         })
-        const { data } = await api.post('appointment/create', {
+        
+        await api.post('appointment/create', {
             userId: cookies.get('userId'),
             name: title,
             date,

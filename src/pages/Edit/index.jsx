@@ -50,7 +50,7 @@ const Edit = () => {
             arr.push((item.value));
         })
 
-        const { data } = await api.post('appointment/edit', {
+        await api.post('appointment/edit', {
             id,
             name: title,
             date,

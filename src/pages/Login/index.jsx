@@ -3,36 +3,35 @@ import { Redirect, Link, useHistory} from 'react-router-dom';
 
 import api from '../../services/api';
 
+import { showLoader, hideLoader } from '../../services/loader';
+
 import './style.css';
 
 const Login = ({ cookies }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
-
+    
     const history = useHistory();
 
     useEffect(() => {
         if (cookies.get('userId')) {
             history.push('/');
         }
+        hideLoader();
     }, []);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        showLoader();
+
         const { data } = await api.post('/login', { email, password });
 
         if (data.error) {
             alert("Email e senha incorretos");
         } else {
             cookies.set('userId', data._id);
-            console.log('cookie setted')
-            console.log(cookies)
-            document.getElementById('loader-wrapper').classList.add('active');
-            setTimeout(() => {
-                setRedirect(true)
-                console.log('redirect, true')
-            }, 2000)
+            history.push('/');
         }
     }
 
@@ -57,9 +56,7 @@ const Login = ({ cookies }) => {
                 </form>
                 <img draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
             </div>
-            <div id="loader-wrapper">
-                <div className="loader"></div>
-            </div>
+            
         </>
     )
 };

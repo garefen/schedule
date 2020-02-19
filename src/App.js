@@ -4,8 +4,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
@@ -14,6 +13,10 @@ import Add from './pages/Add';
 import Edit from './pages/Edit';
 import Login from './pages/Login';
 import CreateAccount from './pages/CreateAccount';
+import NotFound from './pages/NotFound';
+
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 function App() {
   const cookies = new Cookies();
@@ -23,26 +26,23 @@ function App() {
       <Router>
         <Switch>
           <Route path='/login'>
-              <Login cookies={cookies} />
+              <PublicRoute component={Login} cookies={cookies} />
           </Route>
           <Route path='/createaccount'>
-            <CreateAccount cookies={cookies} />
+            <PublicRoute component={CreateAccount} cookies={cookies} />
           </Route>
-          { cookies.get('userId') ? 
-            <>
-              <Route path='/add'>
-                <Add cookies={cookies} />
-              </Route>
-              <Route path='/edit/:id'>
-                <Edit />
-              </Route>
-              <Route exact path='/'>
-                <Dashboard cookies={cookies} />
-              </Route>
-            </>
-          : 
-            <Redirect to='/login' />
-          }
+          <Route path='/add'>
+            <PrivateRoute component={Add} cookies={cookies}/>
+          </Route>
+          <Route path='/edit/:id'>
+            <PrivateRoute component={Edit} cookies={cookies} />
+          </Route>
+          <Route exact path='/'>
+            <PrivateRoute component={Dashboard} cookies={cookies} />
+          </Route>
+          <Route>
+            <NotFound/>
+          </Route>
         </Switch>
       </Router>
 

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import { showLoader, hideLoader } from '../../services/loader';
+
 import {
     Link,
     Redirect
@@ -18,10 +20,10 @@ const Dashboard = ({ cookies }) => {
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
-        
         const getAppointments = async () => {
             const { data } = await api.post('/appointment', { userId: cookies.get('userId') });
             setSchedule(data);
+            hideLoader();
         }
 
         getAppointments();
