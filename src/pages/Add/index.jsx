@@ -30,8 +30,9 @@ const Add = ({cookies}) => {
         setTitle(event.target.value);
     }
 
-    const handleDateChange = (event) => {
-        setDate(event);
+    const handleDateChange = async (event) => {
+        setDate(new Date(event));
+        console.log(new Date(event));
     }
 
     const handleFormSubmit =  async (event) => {

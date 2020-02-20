@@ -27,6 +27,7 @@ const Edit = () => {
 
             setTitle(data.name);
             setBullets(data.bullets);
+            setDate(new Date(data.date));
         }
 
         getAppointment();

@@ -3,7 +3,7 @@ import { Redirect, Link, useHistory} from 'react-router-dom';
 
 import api from '../../services/api';
 
-import { showLoader, hideLoader } from '../../services/loader';
+import { showLoader, hideLoader } from '../../services/loader.js';
 
 import './style.css';
 
@@ -24,12 +24,13 @@ const Login = ({ cookies }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         showLoader();
-
         const { data } = await api.post('/login', { email, password });
-
+        
         if (data.error) {
+            hideLoader();
             alert("Email e senha incorretos");
         } else {
+            showLoader();
             cookies.set('userId', data._id);
             history.push('/');
         }

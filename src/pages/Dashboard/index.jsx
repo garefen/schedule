@@ -48,8 +48,12 @@ const Dashboard = ({ cookies }) => {
     }
 
     const logout = () => {
-        cookies.remove('userId');
-        setRedirect(true);
+        showLoader();
+        setTimeout(() => {
+
+            cookies.remove('userId');
+            setRedirect(true);
+        }, 1000);
     }
 
     return (

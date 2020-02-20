@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 import api from '../../services/api';
 
+import { showLoader, hideLoader } from '../../services/loader.js';
+
 import './style.css';
 
 const CreateAccount = ({ cookies }) => {
@@ -20,6 +22,7 @@ const CreateAccount = ({ cookies }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        showLoader();
         const { data } = await api.post('/user/create', { email, password, name });
 
         cookies.set('userId', data._id);
