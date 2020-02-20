@@ -19,10 +19,15 @@ const Dashboard = ({ cookies }) => {
 
     const [redirect, setRedirect] = useState(false);
 
+    const [user, setUser] = useState({});
+
     useEffect(() => {
         const getAppointments = async () => {
+            showLoader();
             const { data } = await api.post('/appointment', { userId: cookies.get('userId') });
+            const response = await api.post('/user', { userId: cookies.get('userId') })
             setSchedule(data);
+            setUser(response.data);
             hideLoader();
         }
 
@@ -63,7 +68,7 @@ const Dashboard = ({ cookies }) => {
                 <Link to='/add' id="cta_button__add" className="dashboard__add__button active">+</Link>
             </div>
             <div className="dashboard__logout">
-                <button onClick={logout}>Sair</button>
+                <button onClick={logout}>({user.name}) Sair</button>
             </div>
             <div className="dashboard__slider">
                 {schedule.map((item, key) => {

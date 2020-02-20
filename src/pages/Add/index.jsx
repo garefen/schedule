@@ -7,6 +7,7 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
  
+import { showLoader, hideLoader } from '../../services/loader'
 
 import api from '../../services/api';
 
@@ -36,6 +37,7 @@ const Add = ({cookies}) => {
 
     const handleFormSubmit =  async (event) => {
         event.preventDefault();
+        showLoader();
 
         let bul = [...document.getElementsByClassName('add__form__bullet')];
         let arr = [];

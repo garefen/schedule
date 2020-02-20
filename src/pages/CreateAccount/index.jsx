@@ -23,10 +23,15 @@ const CreateAccount = ({ cookies }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         showLoader();
-        const { data } = await api.post('/user/create', { email, password, name });
+        if (name && email && password) {
+            const { data } = await api.post('/user/create', { email, password, name });
+            cookies.set('userId', data._id);
+            history.push('/');
+        } else {
+            alert("Preencha todos os campos");
+            hideLoader();
+        }
 
-        cookies.set('userId', data._id);
-        history.push('/');
     }
 
     const handleNameChange = (event) => {
