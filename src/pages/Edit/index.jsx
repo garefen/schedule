@@ -10,6 +10,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import api from '../../services/api';
 
+import { showLoader, hideLoader } from '../../services/loader'
+
 import './style.css';
 
 const Edit = () => {
@@ -23,11 +25,13 @@ const Edit = () => {
 
     useEffect(() => {
         const getAppointment = async () => {
+            showLoader();
             const { data } = await api.post('/appointment/getone', { id });
 
             setTitle(data.name);
             setBullets(data.bullets);
             setDate(new Date(data.date));
+            hideLoader();
         }
 
         getAppointment();

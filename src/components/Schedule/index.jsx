@@ -5,10 +5,13 @@ import './style.css';
 
 import api from '../../services/api';
 
+import { showLoader, hideLoader } from '../../services/loader'
+
 const Schedule = ({ item }) => {
     const [redirect, setRedirect] = useState(false);
 
     const deleteItem = async () => {
+        showLoader()
         await api.post('/appointment/delete', {id: item._id})
         setRedirect(true);
         window.location.reload()
