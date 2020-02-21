@@ -1,5 +1,5 @@
 .dashboard {
-  padding: 5%;
+  padding: 4% 5%;
   height: 100vh;
   width: 100vw;
 }
@@ -9,6 +9,7 @@
 }
 
 .dashboard__add__button.active {
+  z-index: 5;
   cursor: pointer;
   color: lightskyblue;
   font-size: 2rem;
@@ -32,6 +33,7 @@
 }
 
 .dashboard__logout button {
+  z-index: 5;
   cursor: pointer;
   color: #dd7b8e;
   position: absolute;
@@ -44,14 +46,6 @@
 }
 
 .dashboard__slider {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  overflow: hidden;
   height: 95vh;
 }
 
@@ -60,12 +54,10 @@
 }
 
 .dashboard__slider__item {
-  margin-right: 10%;
   height: 95vh;
 }
 
 .dashboard__slider__item__lastSlide {
-  min-width: 90vw;
   height: 60vh;
   color: white;
   overflow: auto;
@@ -121,6 +113,32 @@
   border: 3px solid white;
   margin-top: 30px;
   background: white;
+}
+
+.dashboard .carousel__inner-slide {
+  padding: 0 30px;
+}
+
+.dashboard .carousel__dot-group {
+  position: absolute;
+  bottom: 2.5%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.dashboard .carousel__dot-group .carousel__dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #467b9c;
+  margin: 0 5px;
+}
+
+.dashboard .carousel__dot-group .carousel__dot--selected {
+  background: #1b303d;
 }
 
 .dashboard__controls {

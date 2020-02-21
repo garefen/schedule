@@ -9,6 +9,9 @@ import {
 
 import './style.css';
 
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, DotGroup } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+
 import Schedule from '../../components/Schedule';
 import ScheduleDescription from '../../components/ScheduleDescription';
 
@@ -70,40 +73,35 @@ const Dashboard = ({ cookies }) => {
             <div className="dashboard__logout">
                 <button onClick={logout}>({user.name}) Sair</button>
             </div>
-            <div className="dashboard__slider">
-                {schedule.map((item, key) => {
-                    return (
-                        <div key={key} className="dashboard__slider__item">
-                            <Schedule item={item} />
-                            <ScheduleDescription weekDay={item.weekday} day={item.day} month={item.month}/>
-                        </div>
-                    )
-                })}
-                <div id="1" className="dashboard__slider__item">
-                    <div className="dashboard__slider__item__lastSlide">
-                        <span className="dashboard__slider__item__lastSlide__title">
-                            Adicione um compromisso
-                        </span>
-                        <img draggable='false' className='dashboard__slider__item__lastSlide__image' src={require('../../assets/idle.svg')} alt=""/>
-                    </div>
-                    <div className="dashboard__slider__item__lastSlide__cta">
-                        <Link to='/add' className="dashboard__slider__item__lastSlide__cta__button">+</Link>
-                   </div>
-                </div>
-            </div>
-            <div className="dashboard__controls">
-                {schedule.map((item, key) => {
-                    if (key === 0) {
+            <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={125}
+                totalSlides={schedule.length + 1}
+                className="dashboard__slider"
+            >
+                <Slider>
+                    {schedule.map((item, key) => {
                         return (
-                            <span id={`item_${key}`} key={key} onClick={scrollOnClick.bind(key)} className="dashboard__controls__item active"></span>
+                            <Slide index={key} key={key} className="dashboard__slider__item">
+                                <Schedule item={item} />
+                                <ScheduleDescription weekDay={item.weekday} day={item.day} month={item.month}/>
+                            </Slide>
                         )
-                    }
-                    return (
-                        <span id={`item_${key}`} key={key} onClick={scrollOnClick.bind(key)} className="dashboard__controls__item"></span>
-                    )
-                })}
-                <span id={`item_${schedule.length}`} key={schedule.lenght} onClick={scrollOnClick.bind(schedule.length)} className="dashboard__controls__item"></span>
-            </div>
+                    })}
+                    <Slide index={schedule.length} className="dashboard__slider__item">
+                        <div className="dashboard__slider__item__lastSlide">
+                                <span className="dashboard__slider__item__lastSlide__title">
+                                    Adicione um compromisso
+                                </span>
+                                <img draggable='false' className='dashboard__slider__item__lastSlide__image' src={require('../../assets/idle.svg')} alt=""/>
+                            </div>
+                            <div className="dashboard__slider__item__lastSlide__cta">
+                                <Link to='/add' className="dashboard__slider__item__lastSlide__cta__button">+</Link>
+                        </div>
+                    </Slide>
+                </Slider>
+                <DotGroup />
+            </CarouselProvider>
         </div>
     );
 };

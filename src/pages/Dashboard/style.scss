@@ -1,5 +1,5 @@
 .dashboard {
-    padding: 5%;
+    padding: 4% 5%;
     height: 100vh;
     width: 100vw;
 
@@ -7,6 +7,7 @@
         &__button {
             display: none;
             &.active {
+                z-index: 5;
                 cursor: pointer;
                 // color: pink;
                 color: lightskyblue;
@@ -27,6 +28,7 @@
     }
 
     &__logout button{
+        z-index: 5;
         cursor: pointer;
         color: rgb(221, 123, 142);
         position: absolute;
@@ -39,9 +41,9 @@
     }
 
     &__slider {
-        display: flex;
-        flex-direction: row;
-        overflow: hidden;
+        // display: flex;
+        // flex-direction: row;
+        // overflow: hidden;
         height: 95vh;
 
         &::-webkit-scrollbar {
@@ -49,11 +51,11 @@
         }
         
         &__item {
-            margin-right: 10%;
+            // margin-right: 10%;
             height: 95vh;
 
             &__lastSlide {
-                min-width: 90vw;
+                // min-width: 90vw;
                 height: 60vh;
                 color: white;
                 overflow: auto;
@@ -95,6 +97,30 @@
         }
 
         
+    }
+
+    .carousel__inner-slide {
+        padding: 0 30px;
+    }
+    .carousel__dot-group {
+        position: absolute;
+        bottom: 2.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        .carousel__dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            border: none;
+            // background: #dd7385;
+            background: #467b9c;
+            margin: 0 5px;
+            &--selected {
+                // background: #5c3037;
+                background: #1b303d;
+            }
+        }
     }
 
     &__controls {
