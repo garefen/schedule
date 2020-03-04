@@ -23,24 +23,33 @@
 #loader-wrapper {
     display: none;
     &.active {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
-        bottom: 0;
         right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0,0,0,0.4);
+        height: 100vh;
+        background: rgba(0,0,0,0.2);
 
         > div {
-            border: 5px solid #f3f3f3; /* Light grey */
-            border-top: 5px solid #3498db; /* Blue */
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            margin-bottom: 100px;
+            background: rgb(67, 67, 80);
+            height: 10px;
+            clip-path: inset(0% 100% 0% 0%);
+            transition: clip-path 6s ease-in-out;
+            animation: loader 1s infinite ease-in-out;
         }        
+    }
+}
+
+
+@keyframes loader {
+    0% {
+        clip-path: inset(0% 100% 0% 0%);
+    }
+    50% {
+        clip-path: inset(0% 20% 0% 30%);
+    }
+    100% {
+        clip-path: inset(0% 0% 0% 100%);
     }
 }

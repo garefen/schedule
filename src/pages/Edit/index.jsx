@@ -8,6 +8,8 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { useAlert } from 'react-alert';
+
 import api from '../../services/api';
 
 import { showLoader, hideLoader } from '../../services/loader'
@@ -22,6 +24,8 @@ const Edit = () => {
     const [redirect, setRedirect] = useState(false);
 
     const { id } = useParams();
+
+    const alert = useAlert();
 
     useEffect(() => {
         const getAppointment = async () => {
@@ -62,6 +66,8 @@ const Edit = () => {
             bullets: arr
         });       
         
+        alert.show("Editado");
+
         setRedirect(true);
 
     }
@@ -83,7 +89,10 @@ const Edit = () => {
                     {bullets.map((value) => {
                         return <input type="text" defaultValue={value} className='edit__form__bullet' />
                     })}
-                    <button type='submit'>Enviar</button>
+                    <button type='submit'>
+                        <span>Enviar</span>
+                        <div className="clip">Enviar</div>
+                    </button>
                     <img src={require('../../assets/editpage.svg')} alt=""/>
                 </form>
             </div>

@@ -6,18 +6,21 @@ import api from '../../services/api';
 import { showLoader, hideLoader } from '../../services/loader.js';
 
 import './style.css';
+import { useAuth } from '../../context/auth';
 
-const Login = ({ cookies }) => {
+const Login = (props) => {
+    let referer = '/';
+    if (props.location.state) {
+        referer = props.location.state.referer || '/';
+    }
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
+    const [isLoggedIn, setLoggedIn] = useState(false);
     
-    const history = useHistory();
+    const { setAuthTokens } = useAuth();
 
     useEffect(() => {
-        if (cookies.get('userId')) {
-            history.push('/');
-        }
         hideLoader();
     }, []);
 
@@ -31,8 +34,8 @@ const Login = ({ cookies }) => {
             alert("Email e senha incorretos");
         } else {
             showLoader();
-            cookies.set('userId', data._id);
-            history.push('/');
+            setAuthTokens(data);
+            setLoggedIn(true);
         }
     }
 
@@ -44,9 +47,12 @@ const Login = ({ cookies }) => {
         setPassword(event.target.value);
     }
 
+    if (isLoggedIn) {
+        return <Redirect to={referer} />
+    }
+
     return (
         <>
-            {redirect && <Redirect to='/' />}
             <div className="login">
                 <h1 className="login__title">Login</h1>
                 <form onSubmit={handleSubmit} className="login__form">

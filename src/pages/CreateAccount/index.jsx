@@ -1,32 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import api from '../../services/api';
 
 import { showLoader, hideLoader } from '../../services/loader.js';
 
 import './style.css';
+import { useAuth } from '../../context/auth';
 
-const CreateAccount = ({ cookies }) => {
+const CreateAccount = (props) => {
+    let referer = '/';
+
+    if (props.location.state) {
+        referer = props.location.state.referer || '/';
+    }
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const history = useHistory();
+    const { setAuthTokens } = useAuth();
 
-    useEffect(() => {
-        if (cookies.get('userID')) {
-            history.push('/');
-        }
-    }, []);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         showLoader();
         if (name && email && password) {
             const { data } = await api.post('/user/create', { email, password, name });
-            cookies.set('userId', data._id);
-            history.push('/');
+            setAuthTokens(data);
+            setIsLoggedIn(true);
         } else {
             alert("Preencha todos os campos");
             hideLoader();
@@ -42,6 +45,10 @@ const CreateAccount = ({ cookies }) => {
     }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
+    }
+
+    if (isLoggedIn) {
+        return <Redirect to={referer} />
     }
 
     return (

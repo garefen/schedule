@@ -26,7 +26,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   border-radius: 50%;
-  border: 1px solid white;
   background: none;
   position: absolute;
   top: 20px;
@@ -37,6 +36,42 @@
   width: 40%;
   height: 40%;
   fill: white;
+}
+
+.schedule__edit__button.active:hover .schedule__edit__button__clip {
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+}
+
+.schedule__edit__button__clip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid white;
+  border-radius: 50%;
+  -webkit-clip-path: circle(0% at 50% 100%);
+          clip-path: circle(0% at 50% 100%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-clip-path .7s ease-out;
+  transition: -webkit-clip-path .7s ease-out;
+  transition: clip-path .7s ease-out;
+  transition: clip-path .7s ease-out, -webkit-clip-path .7s ease-out;
+}
+
+.schedule__edit__button__clip svg {
+  display: none;
 }
 
 .schedule__delete button {

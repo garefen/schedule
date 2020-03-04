@@ -24,33 +24,55 @@
 }
 
 #loader-wrapper.active {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #loader-wrapper.active > div {
-  border: 5px solid #f3f3f3;
-  /* Light grey */
-  border-top: 5px solid #3498db;
-  /* Blue */
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-          animation: spin 2s linear infinite;
-  margin-bottom: 100px;
+  background: #434350;
+  height: 10px;
+  -webkit-clip-path: inset(0% 100% 0% 0%);
+          clip-path: inset(0% 100% 0% 0%);
+  -webkit-transition: -webkit-clip-path 6s ease-in-out;
+  transition: -webkit-clip-path 6s ease-in-out;
+  transition: clip-path 6s ease-in-out;
+  transition: clip-path 6s ease-in-out, -webkit-clip-path 6s ease-in-out;
+  -webkit-animation: loader 1s infinite ease-in-out;
+          animation: loader 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes loader {
+  0% {
+    -webkit-clip-path: inset(0% 100% 0% 0%);
+            clip-path: inset(0% 100% 0% 0%);
+  }
+  50% {
+    -webkit-clip-path: inset(0% 20% 0% 30%);
+            clip-path: inset(0% 20% 0% 30%);
+  }
+  100% {
+    -webkit-clip-path: inset(0% 0% 0% 100%);
+            clip-path: inset(0% 0% 0% 100%);
+  }
+}
+
+@keyframes loader {
+  0% {
+    -webkit-clip-path: inset(0% 100% 0% 0%);
+            clip-path: inset(0% 100% 0% 0%);
+  }
+  50% {
+    -webkit-clip-path: inset(0% 20% 0% 30%);
+            clip-path: inset(0% 20% 0% 30%);
+  }
+  100% {
+    -webkit-clip-path: inset(0% 0% 0% 100%);
+            clip-path: inset(0% 0% 0% 100%);
+  }
 }
 /*# sourceMappingURL=App.css.map */

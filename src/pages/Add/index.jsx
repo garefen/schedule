@@ -7,6 +7,8 @@ import {
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
  
+import { useAlert } from 'react-alert'
+
 import { showLoader, hideLoader } from '../../services/loader'
 
 import api from '../../services/api';
@@ -35,6 +37,8 @@ const Add = ({cookies}) => {
         setDate(new Date(event));
     }
 
+    const alert = useAlert();
+
     const handleFormSubmit =  async (event) => {
         event.preventDefault();
         showLoader();
@@ -46,11 +50,13 @@ const Add = ({cookies}) => {
         })
         
         await api.post('appointment/create', {
-            userId: cookies.get('userId'),
+            userId: JSON.parse(localStorage.getItem("tokens"))._id,
             name: title,
             date,
             bullets: arr
         })
+
+        alert.show("Adicionado");
 
         setRedirect(true);
     }
@@ -72,7 +78,7 @@ const Add = ({cookies}) => {
 
     return (
         <>
-            {redirect && <Redirect to='/' />}
+            {redirect && <Redirect to={{ pathname: '/', state: {added: true} }}/>}
             <div className='add'>
                 <span className="add__title">Adicionar Compromisso</span>
                 <Link to='/' className="add__returnBtn"> Voltar </Link>
@@ -88,7 +94,10 @@ const Add = ({cookies}) => {
                         {bulletsElements}
                     </div>
 
-                    <button type='submit'>Enviar</button>
+                    <button type='submit'>
+                        <span>Enviar</span>
+                        <div className="clip">Enviar</div>
+                    </button>
                 </form>
                 <img src={require('../../assets/add.svg')} alt=""/>
             </div>

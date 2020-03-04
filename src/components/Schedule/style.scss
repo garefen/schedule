@@ -20,7 +20,7 @@
                 align-items: center;
                 justify-content: center;
                 border-radius: 50%;
-                border: 1px solid white;
+                // border: 1px solid white;
                 background: none;
                 position: absolute;
                 top: 20px;
@@ -29,6 +29,36 @@
                     width: 40%;
                     height: 40% ;
                     fill: white;
+                }
+                &:hover {
+                    .schedule__edit__button__clip {
+                        clip-path: circle(100%);
+                    }
+                }
+            }
+
+            &__clip {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid white;
+                // background: white;
+                border-radius: 50%;
+                clip-path: circle(0% at 50% 100%);
+                transform: translate(-50%, -50%);
+                transition: clip-path .7s ease-out;
+
+                
+                svg {
+                    display: none;
+                    // width: 40%;
+                    // height: 40%;
+                    // fill: lightskyblue !important; 
                 }
             }
         }

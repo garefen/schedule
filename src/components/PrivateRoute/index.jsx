@@ -1,16 +1,19 @@
 import React from 'react';
 
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+import { useAuth } from '../../context/auth';
 
-const PrivateRoute = ({component:Component, cookies }) => {
+const PrivateRoute = ({component:Component, ...rest }) => {
+    const { authTokens } = useAuth();
+    
     return (
-        <>
-            {cookies.get('userId') ?
-                <Component cookies={cookies}/>
-            :
-                <Redirect to='/login' />
-            }
-        </>
+        <Route {...rest} render={(props) =>
+            localStorage.getItem("tokens") ? (
+                <Component {...props} />
+            ) : (
+                <Redirect to={{ pathname:"/login", state:{ referer: props.location } }} />
+            )
+        } />
     )
 };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import {
@@ -6,7 +6,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import Cookies from 'universal-cookie';
 
 import Dashboard from './pages/Dashboard';
 import Add from './pages/Add';
@@ -17,37 +16,52 @@ import NotFound from './pages/NotFound';
 
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import Delete from './components/Delete';
+
+import { AuthContext } from './context/auth';
 
 function App() {
-  const cookies = new Cookies();
+  const [authTokens, setAuthTokens] = useState();
+
+  const setTokens = (data) => {
+    localStorage.setItem("tokens", JSON.stringify(data));
+    setAuthTokens(data);
+  }
+
 
   return (  
-    <div className="app">
-      <Router>
-        <Switch>
-          <Route path='/login'>
-              <PublicRoute component={Login} cookies={cookies} />
-          </Route>
-          <Route path='/createaccount'>
-            <PublicRoute component={CreateAccount} cookies={cookies} />
-          </Route>
-          <Route path='/add'>
-            <PrivateRoute component={Add} cookies={cookies}/>
-          </Route>
-          <Route path='/edit/:id'>
-            <PrivateRoute component={Edit} cookies={cookies} />
-          </Route>
-          <Route exact path='/'>
-            <PrivateRoute component={Dashboard} cookies={cookies} />
-          </Route>
-          <Route>
-            <NotFound/>
-          </Route>
-        </Switch>
-      </Router>
-
-      
-    </div>
+    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
+      <div className="app">
+        <Router>
+          <Switch>
+            <Route path='/login'>
+                <PublicRoute component={Login} />
+            </Route>
+            <Route path='/createaccount'>
+              <PublicRoute component={CreateAccount} />
+            </Route>
+            <Route path='/add'>
+              <PrivateRoute component={Add}/>
+            </Route>
+            <Route path='/edit/:id'>
+              <PrivateRoute component={Edit} />
+            </Route>
+            <Route exact path='/'>
+              <PrivateRoute component={Dashboard} />
+            </Route>
+            <Route exact path='/delete'>
+              <PrivateRoute component={Delete} />
+            </Route>
+            <Route>
+              <NotFound/>
+            </Route>
+          </Switch>
+        </Router>
+        <div id="loader-wrapper">
+          <div className="loader"></div>
+        </div>
+      </div>
+    </AuthContext.Provider>
   );
 }
 
