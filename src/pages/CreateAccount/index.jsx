@@ -53,7 +53,7 @@ const CreateAccount = (props) => {
 
     return (
         <>
-            <div className="createaccount">
+            {/* <div className="createaccount">
                 <h1 className="createaccount__title">Criar Conta</h1>
                 <form onSubmit={handleSubmit} className="createaccount__form">
                     <input onChange={handleNameChange} type="text" placeholder="Nome" />
@@ -62,8 +62,34 @@ const CreateAccount = (props) => {
                     <Link className='createaccount__form__link' to='/login'>Já tem uma conta? Clique aqui</Link>
                     <button type="submit">Criar conta</button>
                 </form>
+            </div> */}
+            <div className="createaccount">
+                <div className="createaccount__info">
+                    <span className="createaccount__info__absolute rotina mobile-hide">
+                        Rotina
+                    </span>
+                    <span className="createaccount__info__absolute escolar mobile-hide">
+                        Escolar
+                    </span>
+                    <h1 className="createaccount__info__title">Rotina Escolar</h1>
+                    <div className="createaccount__info__inner">
+                        <p className="createaccount__info__inner__description">O aplicativo para <br/>gerenciar suas tarefas</p>
+                        <div className="createaccount__info__inner__square square square-white"></div>
+                    </div>
+                    <img className='createaccount__info__img' draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
+                </div>
+                <div className="createaccount__sign">
+                    <div className="createaccount__sign__square square square-blue"></div>
+                    <h1 className="createaccount__sign__title">Criar Conta</h1>
+                    <form onSubmit={handleSubmit} className="createaccount__sign__form">
+                        <input onChange={handleNameChange} type="text" placeholder="Nome" />
+                        <input onChange={handleEmailChange} type="text" placeholder="Email" />
+                        <input onChange={handlePasswordChange} type="password" placeholder='Senha' />
+                        <button type="submit">Entrar</button>
+                        <Link className='createaccount__sign__form__link' to='/login'>Já tem uma conta? Clique aqui</Link>
+                    </form>
+                </div>
             </div>
-
         </>
     )
 };
