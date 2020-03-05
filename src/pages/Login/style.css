@@ -51,6 +51,7 @@
           user-select: none;
   line-height: 1.7;
   position: absolute;
+  display: none;
 }
 
 .login__info__absolute.rotina {
