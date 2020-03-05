@@ -18,7 +18,7 @@ const Schedule = ({ item }) => {
     const deleteItem = async () => {
         showLoader()
         await api.post('/appointment/delete', {id: item._id})
-        alert.show("Deletado")
+        alert.show("Apagado")
         setRedirect(true);
     }
 

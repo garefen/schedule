@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+import InputMask from 'react-input-mask';
+
 import { 
     Link,
     Redirect 
 } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
  
 import { useAlert } from 'react-alert'
 
@@ -18,6 +18,7 @@ import './style.css';
 const Add = ({cookies}) => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState(new Date());
+    const [showDate, setShowDate] = useState("");    
 
     const [count, setCount] = useState(1);
     const [bulletsElements, setBulletsElements] = useState([]);
@@ -33,32 +34,41 @@ const Add = ({cookies}) => {
         setTitle(event.target.value);
     }
 
-    const handleDateChange = async (event) => {
-        setDate(new Date(event));
+    const handleDateChange = (e) => {
+        let valor = e.target.value.split('/');
+        valor = [valor[1], valor[0], valor[2]].join("/");
+        setShowDate(e.target.value);
+        setDate(new Date(valor));
     }
 
-    const alert = useAlert();
+    const alerta = useAlert();
 
     const handleFormSubmit =  async (event) => {
         event.preventDefault();
         showLoader();
 
-        let bul = [...document.getElementsByClassName('add__form__bullet')];
-        let arr = [];
-        bul.map((item) => {
-            arr.push((item.value));
-        })
-        
-        await api.post('appointment/create', {
-            userId: JSON.parse(localStorage.getItem("tokens"))._id,
-            name: title,
-            date,
-            bullets: arr
-        })
-
-        alert.show("Adicionado");
-
-        setRedirect(true);
+        console.log(showDate);
+        if (showDate === "") {
+            alert("Insira uma data e hora");
+            hideLoader();
+        } else {
+            let bul = [...document.getElementsByClassName('add__form__bullet')];
+            let arr = [];
+            bul.map((item) => {
+                arr.push((item.value));
+            })
+            
+            await api.post('appointment/create', {
+                userId: JSON.parse(localStorage.getItem("tokens"))._id,
+                name: title,
+                date,
+                bullets: arr
+            })
+    
+            alerta.show("Adicionado");
+    
+            setRedirect(true);
+        }
     }
 
     const newBullet = () => {
@@ -84,11 +94,13 @@ const Add = ({cookies}) => {
                 <Link to='/' className="add__returnBtn"> Voltar </Link>
                 <form onSubmit={handleFormSubmit} className="add__form">
                     <input type="text" placeholder='Nome' value={title} onChange={handleTitleChange} />
-                    <DatePicker
+                    <InputMask 
+                        type="text"
                         onChange={handleDateChange}
-                        selected={date}
-                        showTimeSelect
-                        dateFormat="Pp"
+                        value={showDate}
+                        placeholder="Data e hora"
+                        mask="99/99/9999 99:99"
+                        maskChar=" "                        
                     />
                     <div className="add__form__bullets">
                         {bulletsElements}

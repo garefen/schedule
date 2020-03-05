@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
+import InputMask from 'react-input-mask';
+
 import { 
     Link,
     useParams, 
     Redirect
 } from 'react-router-dom';
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 import { useAlert } from 'react-alert';
 
@@ -19,6 +19,7 @@ import './style.css';
 const Edit = () => {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState(new Date());
+    const [showDate, setShowDate] = useState("");    
     const [bullets, setBullets] = useState([]);
 
     const [redirect, setRedirect] = useState(false);
@@ -34,7 +35,14 @@ const Edit = () => {
 
             setTitle(data.name);
             setBullets(data.bullets);
-            setDate(new Date(data.date));
+            const exmDate = new Date(data.date);
+            setDate(exmDate);
+            setShowDate(`${
+                (exmDate.getDate()).toString().padStart(2, '0')}/${
+                (exmDate.getMonth()+1).toString().padStart(2, '0')}/${
+                exmDate.getFullYear().toString().padStart(4, '0')} ${
+                exmDate.getHours().toString().padStart(2, '0')}:${
+                exmDate.getMinutes().toString().padStart(2, '0')}`);
             hideLoader();
         }
 
@@ -46,8 +54,11 @@ const Edit = () => {
         setTitle(event.target.value);
     }
 
-    const handleDateChange = (event) => {
-        setDate(event);
+    const handleDateChange = (e) => {
+        let valor = e.target.value.split('/');
+        valor = [valor[1], valor[0], valor[2]].join("/");
+        setShowDate(e.target.value);
+        setDate(new Date(valor));
     }    
 
     const handleFormSubmit = async (event) => {
@@ -80,11 +91,13 @@ const Edit = () => {
                 <Link to='/' className="edit__returnBtn"> Voltar </Link>
                 <form onSubmit={handleFormSubmit} className="edit__form">
                     <input type="text" placeholder='Nome' value={title} onChange={handleTitleChange} />
-                    <DatePicker
+                    <InputMask 
+                        type="text"
                         onChange={handleDateChange}
-                        selected={date}
-                        showTimeSelect
-                        dateFormat="Pp"
+                        value={showDate}
+                        placeholder="Data e hora"
+                        mask="99/99/9999 99:99"
+                        maskChar=" "
                     />
                     {bullets.map((value) => {
                         return <input type="text" defaultValue={value} className='edit__form__bullet' />

@@ -163,6 +163,10 @@
   background: white;
 }
 
+.dashboard .carousel__slider {
+  height: 90vh;
+}
+
 .dashboard .carousel__inner-slide {
   padding: 0 30px;
 }
