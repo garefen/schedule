@@ -20,6 +20,24 @@
     overflow: hidden;
 }
 
+.mobile-hide {
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
+}
+
+.square {
+    display: block;
+    height: 100px;
+    width: 100px;
+    &-blue {
+        border: 10px solid lightskyblue;
+    }
+    &-white {
+        border: 10px solid white;
+    }
+}
+
 #loader-wrapper {
     display: none;
     &.active {

@@ -52,19 +52,32 @@ const Login = (props) => {
     }
 
     return (
-        <>
-            <div className="login">
-                <h1 className="login__title">Login</h1>
-                <form onSubmit={handleSubmit} className="login__form">
+        <div className="login">
+            <div className="login__info">
+                <span className="login__info__absolute rotina mobile-hide">
+                    Rotina
+                </span>
+                <span className="login__info__absolute escolar mobile-hide">
+                    Escolar
+                </span>
+                <h1 className="login__info__title">Rotina Escolar</h1>
+                <div className="login__info__inner">
+                    <p className="login__info__inner__description">O aplicativo para <br/>gerenciar suas tarefas</p>
+                    <div className="login__info__inner__square square square-white"></div>
+                </div>
+                <img className='login__info__img' draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
+            </div>
+            <div className="login__sign">
+                <div className="login__sign__square square square-blue"></div>
+                <h1 className="login__sign__title">Login</h1>
+                <form onSubmit={handleSubmit} className="login__sign__form">
                     <input onChange={handleEmailChange} type="text" placeholder="Email" />
                     <input onChange={handlePasswordChange} type="password" placeholder='Senha' />
-                    <Link className='login__form__link' to='/createaccount'>Criar uma conta</Link>
-                    <button type="submit">Login</button>
+                    <button type="submit">Entrar</button>
+                    <Link className='login__sign__form__link' to='/createaccount'>Criar uma conta</Link>
                 </form>
-                <img draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
             </div>
-            
-        </>
+        </div>
     )
 };
 

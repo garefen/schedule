@@ -19,6 +19,26 @@
   overflow: hidden;
 }
 
+@media screen and (max-width: 900px) {
+  .mobile-hide {
+    display: none;
+  }
+}
+
+.square {
+  display: block;
+  height: 100px;
+  width: 100px;
+}
+
+.square-blue {
+  border: 10px solid lightskyblue;
+}
+
+.square-white {
+  border: 10px solid white;
+}
+
 #loader-wrapper {
   display: none;
 }
