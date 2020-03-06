@@ -139,3 +139,13 @@ export function unregister() {
       });
   }
 }
+
+export async function subscribe() {
+  let sw = await navigator.serviceWorker.ready;
+  let push = await sw.pushManager.subscribe({
+    userVisibleOnly: true,
+    applicationServerKey: 'BN_y0SI8blpXJEz45zetz9bs1whxjkdZprqILFPQdni8YJBjFwP9BHQ9Ovnxn-OZL8HvpNqwtKHKDgj3G93X_Wk'
+  });
+  console.log(JSON.stringify(push));
+}
+
