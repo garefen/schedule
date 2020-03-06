@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import App from './App';
 import Alert from './components/Alert'
+import * as serviceWorker from './serviceWorker';
 
 const options = {
     position: positions.TOP_RIGHT,
@@ -19,3 +20,5 @@ const Root = () => {
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));
+
+serviceWorker.register();
