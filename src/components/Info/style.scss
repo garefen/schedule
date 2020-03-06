@@ -1,0 +1,41 @@
+.info {
+    position: relative;
+
+    &__title {
+        font-size: 3rem;
+        color: white;
+        letter-spacing: 1.5px;
+        margin: 40px auto 0;
+        text-align: center;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        margin: 120px 0;
+
+        &__description {
+            flex: 1;
+            margin-left: 100px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        &__square {
+            margin-left: auto;
+            width: 100px;
+            border: 15px solid white;
+            border-right: none;
+        }
+    }
+
+    &__img {
+        width: 320px;
+        margin: 90px auto 20px;
+        display: block;
+    }
+
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
+}

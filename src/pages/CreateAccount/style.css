@@ -18,30 +18,6 @@
   position: relative;
 }
 
-.createaccount__info__absolute {
-  font-size: 7rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  opacity: .2;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  line-height: 1.7;
-  position: absolute;
-  display: none;
-}
-
-.createaccount__info__absolute.rotina {
-  top: 11%;
-  left: 5%;
-}
-
-.createaccount__info__absolute.escolar {
-  top: 42%;
-  left: 22%;
-}
-
 .createaccount__info__title {
   font-size: 3rem;
   color: white;

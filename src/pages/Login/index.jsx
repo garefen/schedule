@@ -8,6 +8,8 @@ import { showLoader, hideLoader } from '../../services/loader.js';
 import './style.css';
 import { useAuth } from '../../context/auth';
 
+import Info from '../../components/Info'; 
+
 const Login = (props) => {
     let referer = '/';
     if (props.location.state) {
@@ -53,23 +55,11 @@ const Login = (props) => {
 
     return (
         <div className="login">
-            <div className="login__info">
-                <span className="login__info__absolute rotina mobile-hide">
-                    Rotina
-                </span>
-                <span className="login__info__absolute escolar mobile-hide">
-                    Escolar
-                </span>
-                <h1 className="login__info__title">Rotina Escolar</h1>
-                <div className="login__info__inner">
-                    <p className="login__info__inner__description">O aplicativo para <br/>gerenciar suas tarefas</p>
-                    <div className="login__info__inner__square square square-white"></div>
-                </div>
-                <img className='login__info__img' draggable='false' src={require('../../assets/agenda.svg')} alt=""/>
-            </div>
+            <Info />
             <div className="login__sign">
                 <div className="login__sign__square square square-blue"></div>
                 <h1 className="login__sign__title">Login</h1>
+                <div className="login__sign__message">Se sua conta foi criada antes de 06 de Março, por favor crie outra conta com o mesmo email cadastrado.</div>
                 <form onSubmit={handleSubmit} className="login__sign__form">
                     <input onChange={handleEmailChange} type="text" placeholder="Email" />
                     <input onChange={handlePasswordChange} type="password" placeholder='Senha' />

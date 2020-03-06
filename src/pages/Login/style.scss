@@ -9,70 +9,17 @@
         flex: 1;
         user-select: none;
     }
-    &__info {
-        position: relative;
-
-        &__absolute {
-            font-size: 7rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            opacity: .2;
-            user-select: none;
-            line-height: 1.7;
-            position: absolute;
-            display: none;
-            
-            &.rotina {
-                top: 11%;
-                left: 5%;
-            }
-            &.escolar {
-                top: 42%;
-                left: 22%;
-            }
-        }
-        &__title {
-            font-size: 3rem;
-            color: white;
-            letter-spacing: 1.5px;
-            margin: 40px auto 0;
-            text-align: center;
-        }
-
-        &__inner {
-            display: flex;
-            align-items: center;
-            margin: 120px 0;
-
-            &__description {
-                flex: 1;
-                margin-left: 100px;
-                text-align: center;
-                font-size: 1.5rem;
-            }
-            
-            &__square {
-                margin-left: auto;
-                width: 100px;
-                border: 15px solid white;
-                border-right: none;
-            }
-        }
-
-        &__img {
-            width: 320px;
-            margin: 90px auto 20px;
-            display: block;
-        }
-
-        @media screen and (max-width: 900px) {
-            display: none;
-        }
-    }
     &__sign {
         background: white;
         height: 100vh;
         overflow: auto;
+
+        &__message {
+            color: rgb(206, 68, 68);
+            width: 60%;
+            font-size: .75rem;
+            margin: 40px auto -20px;
+        }
 
         &__square {            
             margin: 40px auto 50px;
